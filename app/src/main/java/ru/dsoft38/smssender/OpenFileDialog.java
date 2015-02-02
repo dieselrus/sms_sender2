@@ -93,8 +93,9 @@ public class OpenFileDialog extends AlertDialog.Builder {
                     public void onClick(DialogInterface dialog, int which) {
                         if (selectedIndex > -1 && listener != null) {
                             listener.OnSelectedFile(listView.getItemAtPosition(selectedIndex).toString());
-                            MainActivity.setFilePath(listView.getItemAtPosition(selectedIndex).toString());
+                            //MainActivity.setFilePath(listView.getItemAtPosition(selectedIndex).toString());
                         }
+                        MainActivity.setFilePath(listView.getItemAtPosition(selectedIndex).toString());
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, null);
@@ -278,7 +279,7 @@ public class OpenFileDialog extends AlertDialog.Builder {
                 } else {
                     if (index != selectedIndex) {
                         selectedIndex = index;
-                        MainActivity.setFilePath(file.getPath());
+                        //MainActivity.setFilePath(file.getPath());
                     }
                     else {
                         selectedIndex = -1;

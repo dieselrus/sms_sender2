@@ -88,6 +88,8 @@ public class MainActivity extends ActionBarActivity {
                         // Делаем кнопку не активной
                         btnBrowse.setEnabled(false);
                         btnStart.setEnabled(false);
+                        btnStop.setEnabled(true);
+                        btnPause.setEnabled(true);
                         btnClean.setEnabled(false);
                         editMessageTest.setEnabled(false);
 
@@ -171,6 +173,14 @@ public class MainActivity extends ActionBarActivity {
         editMessageTest.addTextChangedListener(new TextWatcher()  {
             @Override
             public void afterTextChanged(Editable s) {
+                if(editMessageTest.getText().toString().length() > 0) {
+                    btnClean.setEnabled(true);
+                    btnClean.setBackgroundResource(R.drawable.clean_up);
+                } else {
+                    btnClean.setEnabled(false);
+                    btnClean.setBackgroundResource(R.drawable.clean_down);
+                }
+
                 //imgStatus.setVisibility(View.INVISIBLE);
                 //tvMessageText.setText(getResources().getString(R.string.MessageText) +
                 // " (" + String.valueOf(MAX_LENGTH_SMS - strMyName.length() - txtSMSText.length()) + ")");
@@ -320,7 +330,7 @@ public class MainActivity extends ActionBarActivity {
 
     static public void setFilePath(String path){
         // Чтение списка номеров из файла
-        strNumbers = readFile(tvPhoneNumberListFilePatch.getText().toString());
+        strNumbers = readFile(path);
 
         tvPhoneNumberCount.setText("(" + String.valueOf(strNumbers.size()) + ")");
         tvPhoneNumberListFilePatch.setText(path);
